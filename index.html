@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blossom Boutique — Premium Jewellery</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* DESIGN SYSTEM */
+    :root {
+      --accent-rose:   #F4978E;
+      --soft-pink:     #FFF0EE;
+      --bg-bright:     #FFFDFD;
+      --white:         #FFFFFF;
+      --text-main:     #222222;
+      --text-muted:    #666666;
+      --border-pink:   #FFE3DF;
+      --radius:        12px;
+      --ff-heading:    'Playfair Display', serif;
+      --ff-body:       'Jost', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--ff-body); background-color: var(--bg-bright); color: var(--text-main); line-height: 1.5; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    button { cursor: pointer; border: none; font-family: var(--ff-body); }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-padding { padding: 3.5rem 0; }
+    .section-header { text-align: center; margin-bottom: 2rem; }
+    .section-title { font-family: var(--ff-heading); font-size: 2rem; color: var(--text-main); font-weight: 600; }
+    .section-divider { width: 50px; height: 3px; background: var(--accent-rose); margin: 0.5rem auto 0; border-radius: 2px; }
+
+    /* RIBBON & HEADER */
+    .shipping-bar { background: linear-gradient(90deg, var(--accent-rose), #FFA69E); color: var(--white); text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+    header { background: var(--white); border-bottom: 1px solid var(--border-pink); position: sticky; top: 0; z-index: 100; }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand-title { font-family: var(--ff-heading); font-size: 1.8rem; font-weight: 600; color: var(--text-main); }
+    .brand-title span { color: var(--accent-rose); font-style: italic; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #FFF5F4 0%, var(--white) 100%); padding: 5rem 0; text-align: center; border-bottom: 1px solid var(--border-pink); }
+    .hero-title { font-family: var(--ff-heading); font-size: 2.5rem; color: var(--text-main); margin-bottom: 1rem; }
+    .hero-title em { color: var(--accent-rose); font-style: italic; }
+    .hero-desc { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    /* CATEGORIES GRID */
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; justify-content: center; }
+    .cat-btn { background: var(--white); border: 2px solid var(--border-pink); padding: 1rem 0.5rem; font-size: 0.85rem; font-weight: 600; border-radius: var(--radius); color: var(--text-main); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; text-align: center; transition: all 0.25s ease; text-transform: uppercase; }
+    .cat-btn .emoji { font-size: 1.4rem; }
+    .cat-btn:hover { border-color: var(--accent-rose); background: #FFF9F9; }
+    .cat-btn.active { background: var(--accent-rose); color: var(--white); border-color: var(--accent-rose); }
+
+    /* PRODUCTS GRID */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .product-card { background: var(--white); border: 1px solid var(--border-pink); border-radius: var(--radius); overflow: hidden; position: relative; transition: transform 0.25s ease; }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-image-container { aspect-ratio: 1; background: #FAF9F9; }
+    .product-body { padding: 1.2rem; }
+    .product-cat { font-size: 0.7rem; text-transform: uppercase; color: var(--accent-rose); font-weight: 600; margin-bottom: 0.2rem; }
+    .product-title { font-size: 1.05rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .price-current { font-size: 1.2rem; font-weight: 600; color: var(--text-main); }
+    .badge-shipping { font-size: 0.7rem; font-weight: 600; background: #E8F5E9; color: #2E7D32; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
+
+    /* WHATSAPP BUTTON */
+    .btn-whatsapp { width: 100%; background: #25D366; color: var(--white); padding: 0.8rem; font-weight: 600; font-size: 0.85rem; border-radius: 8px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-whatsapp:hover { background: #20ba59; }
+    footer { background: var(--white); border-top: 1px solid var(--border-pink); padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    
+    @media (max-width: 500px) {
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .product-body { padding: 0.8rem; }
+      .product-title { font-size: 0.95rem; }
+      .price-current { font-size: 1.05rem; }
+      .badge-shipping { display: none; }
+    }
+  </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <div class="shipping-bar">✨ Free Shipping All Over India ✨</div>
+
+  <header>
+    <div class="container nav-container">
+      <div class="brand-title">Blossom <span>Boutique</span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Adorn Your Special Moments With <em>Pure Grace</em></h1>
+      <p class="hero-desc">Discover lightweight, traditional, and radiant boutique jewelry collections designed thoughtfully for every celebration.</p>
+    </div>
+  </section>
+
+  <section class="section-padding container">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Category</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="categories-grid" id="categoryGrid"></div>
+  </section>
+
+  <section class="section-padding container" style="padding-top: 0;">
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Blossom Boutique. Beautiful Handcrafted Jewelry.</p>
+    </div>
+  </footer>
+
+  <script>
+    const CATEGORIES = [
+      { name: "All", emoji: "✨" },
+      { name: "Bridal Jewellery", emoji: "💍" },
+      { name: "Silver Jewellery", emoji: "🥈" },
+      { name: "General Jewellery", emoji: "💎" },
+      { name: "Earrings", emoji: "👂" },
+      { name: "Necklaces", emoji: "📿" },
+      { name: "Bangles", emoji: "🔮" },
+      { name: "Rings", emoji: "💍" },
+      { name: "Bracelets", emoji: "✨" },
+      { name: "Temple Jewellery", emoji: "🛕" },
+      { name: "New Arrivals", emoji: "🌸" }
+    ];
+
+    const TARGET_WHATSAPP_NUMBER = "919442810208";
+    let activeFilter = "All";
+    let PRODUCTS = [];
+
+    function setupCategoryMenu() {
+      const menuEl = document.getElementById("categoryGrid");
+      menuEl.innerHTML = CATEGORIES.map(cat => `
+        <button class="cat-btn ${cat.name === activeFilter ? 'active' : ''}" onclick="applyFilter('${cat.name}')">
+          <span class="emoji">${cat.emoji}</span>
+          <span>${cat.name}</span>
+        </button>
+      `).join('');
+    }
+
+    window.applyFilter = function(categoryName) {
+      activeFilter = categoryName;
+      setupCategoryMenu();
+      displayShopProducts();
+    };
+
+    function displayShopProducts() {
+      const displayGrid = document.getElementById("productsGrid");
+      const visibleProducts = activeFilter === "All" 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === activeFilter);
+
+      if (visibleProducts.length === 0) {
+        displayGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem 0; color: var(--text-muted);">New items coming soon to this category!</div>`;
+        return;
+      }
+
+      displayGrid.innerHTML = visibleProducts.map(prod => `
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="${prod.imageUrl}" alt="${prod.name}" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-cat">${prod.category}</div>
+            <h3 class="product-title">${prod.name}</h3>
+            <div class="price-row">
+              <span class="price-current">₹${Number(prod.price).toLocaleString('en-IN')}</span>
+              <span class="badge-shipping">Free Shipping</span>
+            </div>
+            <button class="btn-whatsapp" onclick="sendOrderMessage('${encodeURIComponent(prod.name)}', ${prod.price})">
+              💬 Place Order
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.sendOrderMessage = function(encodedTitle, cost) {
+      const cleanTitle = decodeURIComponent(encodedTitle);
+      const outputText = `Hello Blossom Boutique! 🌸\n\nI would like to order this item:\n💎 Product Name: ${cleanTitle}\n💰 Price: ₹${cost.toLocaleString('en-IN')}\n🚚 Shipping: FREE SHIPPING\n\nPlease check availability! Thank you.`;
+      const whatsappUrl = `https://wa.me/${TARGET_WHATSAPP_NUMBER}?text=${encodeURIComponent(outputText)}`;
+      window.open(whatsappUrl, '_blank');
+    };
+
+    // Automatically load JSON file containing live dashboard updates
+    async function initStore() {
+      try {
+        const response = await fetch('/products.json');
+        if(response.ok) {
+          const data = await response.json();
+          PRODUCTS = data.products || [];
+        }
+      } catch (e) {
+        console.log("No custom products found yet, loading empty storefront.");
+      }
+      setupCategoryMenu();
+      displayShopProducts();
+    }
+
+    initStore();
+
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

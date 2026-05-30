@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "store"
+    label: "Inventory Management"
+    files:
+      - file: "products.json"
+        label: "Live Product List"
+        name: "products"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            fields:
+              - {label: "Product Name", name: "name", widget: "string"}
+              - {label: "Price (In ₹)", name: "price", widget: "number"}
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Bridal Jewellery", "Silver Jewellery", "General Jewellery", "Earrings", "Necklaces", "Bangles", "Rings", "Bracelets", "Temple Jewellery", "New Arrivals"]
+              - {label: "Product Image", name: "imageUrl", widget: "image"}

@@ -137,7 +137,7 @@
 
     // AIRTABLE CONNECTOR ENGINE KEYS
     const AIRTABLE_BASE_ID = 'appHvuXwDC4SyFrft'; 
-    const AIRTABLE_TOKEN = 'YOUR_SECRET_pat._TOKEN_HERE'; // <--- PASTE YOUR PRIVATE AIRTABLE TOKEN HERE
+    const AIRTABLE_TOKEN = 'pataE0a2Wi510exct.fd14836092d60b740012e74062319a4c90573f5a7e7a44ff64275f51386712d9'; 
     const TABLE_NAME = 'products';
 
     function setupCategoryMenu() {
@@ -159,10 +159,9 @@
     function displayShopProducts() {
       const displayGrid = document.getElementById("productsGrid");
       
-      // Match incoming items to selection category rule
       const visibleProducts = activeFilter === "All" 
         ? PRODUCTS 
-        : PRODUCTS.filter(p => p.category.toLowerCase() === activeFilter.toLowerCase());
+        : PRODUCTS.filter(p => p.category.trim().toLowerCase() === activeFilter.trim().toLowerCase());
 
       if (visibleProducts.length === 0) {
         displayGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem 0; color: var(--text-muted);">New items coming soon to this category!</div>`;
@@ -196,7 +195,6 @@
       window.open(whatsappUrl, '_blank');
     };
 
-    // CONNECT AND DOWNLOAD AIRTABLE CELL VALUES
     async function initStore() {
       const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TABLE_NAME}`;
       
@@ -213,7 +211,6 @@
           PRODUCTS = data.records.map(record => {
             const fields = record.fields;
             
-            // Extract uploaded phone picture links securely
             let finalImg = 'https://via.placeholder.com/300?text=Image+Coming+Soon';
             if (fields.image && fields.image.length > 0) {
               finalImg = fields.image[0].url;

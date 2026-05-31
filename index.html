@@ -171,7 +171,7 @@
       displayGrid.innerHTML = visibleProducts.map(prod => `
         <div class="product-card">
           <div class="product-image-container">
-            <img src="${prod.imageUrl}" alt="${prod.name}" loading="lazy">
+            <img src="${prod.image}" alt="${prod.name}" loading="lazy">
           </div>
           <div class="product-body">
             <div class="product-cat">${prod.category}</div>
@@ -220,7 +220,7 @@
               name: fields.name || 'Premium Handcrafted Item',
               price: parseInt(fields.price) || 0,
               category: fields.category || 'General Jewellery',
-              imageUrl: finalImg
+              image: finalImg
             };
           });
         }

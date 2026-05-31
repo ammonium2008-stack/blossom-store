@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    /* Custom Mobile Fixes for Decap CMS */
+    @media (max-width: 768px) {
+      /* Force layout to stack vertically instead of splitting side-by-side */
+      div[class^="AppLayout-"] {
+        flex-direction: column !important;
+      }
+      /* Make the left sidebar full width at the top */
+      aside[class^="Sidebar-"] {
+        width: 100% !important;
+        position: relative !important;
+        height: auto !important;
+        padding: 10px !important;
+      }
+      /* Make the main content area take up the full screen width */
+      main[class^="MainContent-"] {
+        padding: 15px !important;
+        width: 100% !important;
+      }
+      /* Stack form fields neatly */
+      div[class^="ControlContainer-"] {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>

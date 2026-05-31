@@ -7,14 +7,16 @@ public_folder: "/images"
 
 collections:
   - name: "products"
-    label: "Inventory Management"
-    folder: "data/products" # Saves each product as its own clean file
-    create: true # Adds a giant, easy-to-tap "+ New Product" button
+    label: "Inventory"
+    label_singular: "Product"
+    folder: "data/products"
+    format: "json"
+    create: true
     slug: "{{slug}}"
-    summary: "{{title}} - ₹{{price}}" # Displays item info cleanly in the main list
+    summary: "{{title}} - ₹{{price}}"
     view_groups:
       - label: "By Category"
-        field: "category" # Automatically bundles your 50+ products into neat dropdown sections
+        field: "category"
     fields:
       - {label: "Product Name", name: "title", widget: "string"}
       - {label: "Price (In ₹)", name: "price", widget: "number"}

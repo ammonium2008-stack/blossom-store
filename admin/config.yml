@@ -6,21 +6,17 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "store"
+  - name: "products"
     label: "Inventory Management"
-    files:
-      - file: "products.json"
-        label: "Live Product List"
-        name: "products"
-        fields:
-          - label: "Products"
-            name: "products"
-            widget: "list"
-            fields:
-              - {label: "Product Name", name: "name", widget: "string"}
-              - {label: "Price (In ₹)", name: "price", widget: "number"}
-              - label: "Category"
-                name: "category"
-                widget: "select"
-                options: ["Bridal Jewellery", "Silver Jewellery", "General Jewellery", "Earrings", "Necklaces", "Bangles", "Rings", "Bracelets", "Temple Jewellery", "New Arrivals"]
-              - {label: "Product Image", name: "imageUrl", widget: "image"}
+    folder: "data/products" # Saves each product as its own clean file
+    create: true # Adds a giant, easy-to-tap "+ New Product" button
+    slug: "{{slug}}"
+    summary: "{{title}} - ₹{{price}}" # Displays item info cleanly in the main list
+    view_groups:
+      - label: "By Category"
+        field: "category" # Automatically bundles your 50+ products into neat dropdown sections
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Price (In ₹)", name: "price", widget: "number"}
+      - {label: "Category", name: "category", widget: "select", options: ["Bridal Jewellery", "Silver Jewellery", "General Jewellery", "Earrings", "Necklaces", "Bangles", "Rings", "Bracelets", "Temple Jewellery", "New Arrivals"]}
+      - {label: "Product Image", name: "imageUrl", widget: "image"}
